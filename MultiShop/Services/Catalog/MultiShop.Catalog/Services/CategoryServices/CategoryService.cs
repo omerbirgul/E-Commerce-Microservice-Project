@@ -4,7 +4,7 @@ using MultiShop.Catalog.Dtos.CategoryDtos;
 using MultiShop.Catalog.Entities;
 using MultiShop.Catalog.Settings;
 
-namespace MultiShop.Catalog.Services
+namespace MultiShop.Catalog.Services.CategoryServices
 {
     public class CategoryService : ICategoryService
     {
@@ -51,4 +51,5 @@ namespace MultiShop.Catalog.Services
             throw new NotImplementedException();
         }
     }
+}
 }
