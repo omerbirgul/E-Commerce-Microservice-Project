@@ -1,14 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "GDbPCj2MY4VWBFgOZyseeMgeSaExu0XD74kqLPmwlksz5L/GDWgZnqiSMjT9d3JyWePone9lKSMm2djGI+u9GQ==",
+  "dgSpecHash": "fv34T1KcsERXP3mv/tbV34eL8OInpIwRsc4ZQfQlBmymxfueXY1DNvVjd4Q8HuW+2ZyvreZW5KL1euxwNO30PQ==",
   "success": true,
   "projectFilePath": "D:\\Github\\MultiShop\\MultiShop\\Services\\Catalog\\MultiShop.Catalog\\MultiShop.Catalog.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\ömer\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\ömer\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\ömer\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
     "C:\\Users\\ömer\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\ömer\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",
     "C:\\Users\\ömer\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
+    "C:\\Users\\ömer\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\ömer\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\ömer\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\ömer\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\2.0.0\\microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512",
