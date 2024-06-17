@@ -12,7 +12,7 @@ using MultiShop.Discount.Context;
 namespace MultiShop.Discount.Migrations
 {
     [DbContext(typeof(DapperContext))]
-    [Migration("20240617180328_mig1")]
+    [Migration("20240617233809_mig1")]
     partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,8 +36,8 @@ namespace MultiShop.Discount.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("IsActive")
-                        .HasColumnType("int");
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Rate")
                         .HasColumnType("int");

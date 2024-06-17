@@ -17,7 +17,7 @@ namespace MultiShop.Discount.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Rate = table.Column<int>(type: "int", nullable: false),
-                    IsActive = table.Column<int>(type: "int", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     ValidDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>

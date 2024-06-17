@@ -56,7 +56,7 @@ namespace MultiShop.Discount.Services.DiscountServices
             parameters.Add("couponId", couponId);
             using (var connection = _dapperContext.CreateConnection())
             {
-                var values = await connection.QueryFirstOrDefaultAsync<GetByIdCouponDto>(query);
+                var values = await connection.QueryFirstOrDefaultAsync<GetByIdCouponDto>(query, parameters);
                 return values;
             }
         }
@@ -69,6 +69,7 @@ namespace MultiShop.Discount.Services.DiscountServices
             parameters.Add("@rate", updateCouponDto.Rate);
             parameters.Add("@isActive", updateCouponDto.IsActive);
             parameters.Add("@validDate", updateCouponDto.ValidDate);
+            parameters.Add("@couponId", updateCouponDto.CouponId);
             using (var connection = _dapperContext.CreateConnection())
             {
                 await connection.ExecuteAsync(query, parameters);
