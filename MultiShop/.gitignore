@@ -1,2 +1,13 @@
-.vs
+# Visual Studio dosyaları
+.vs/
+*.suo
+*.pdb
+*.log
+*.user
+*.bak
+*.tmp
+*.cache
+
+# Çözüm dosyaları
 MultiShop.sln
+MultiShop.csproj
