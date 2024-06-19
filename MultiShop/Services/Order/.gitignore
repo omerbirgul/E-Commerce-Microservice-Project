@@ -1,2 +1,6 @@
-/bin/
-/obj/
+/Core/**/bin/
+/Core/**/obj/
+/Infrastructure/**/bin/
+/Infrastructure/**/obj/
+/Presentation/**/bin/
+/Presentation/**/obj/
