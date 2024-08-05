@@ -1,4 +1,6 @@
 /.vs/
 /MultiShop.sln
-/bin/
-/obj/
+/Services/**/bin/
+/Services/**/obj/
+/IdentityServer/**/bin/
+/IdentityServer/**obj/obj/
