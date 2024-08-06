@@ -3,4 +3,4 @@
 /Services/**/bin/
 /Services/**/obj/
 /IdentityServer/**/bin/
-/IdentityServer/**obj/obj/
+/IdentityServer/**/obj/
