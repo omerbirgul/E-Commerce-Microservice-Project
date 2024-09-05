@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MultiShop.Cargo.DataAccessLayer.Abstract
 {
-    public interface CargoDetailDal : IGenericDal<CargoDetail>
+    public interface ICargoDetailDal : IGenericDal<CargoDetail>
     {
     }
 }
