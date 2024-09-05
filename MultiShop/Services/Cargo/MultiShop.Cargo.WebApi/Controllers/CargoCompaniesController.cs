@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Cargo.BusinessLayer.Abstract;
@@ -7,6 +8,7 @@ using MultiShop.Cargo.EntityLayer.Concrete;
 
 namespace MultiShop.Cargo.WebApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CargoCompaniesController : ControllerBase
@@ -27,7 +29,7 @@ namespace MultiShop.Cargo.WebApi.Controllers
             return Ok(values);
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public IActionResult GetCargoCompaniesById(int id)
         {
             var values = _cargoCompanyService.TGetById(id);
