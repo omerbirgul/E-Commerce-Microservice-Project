@@ -4,3 +4,4 @@
 /Services/**/obj/
 /IdentityServer/**/bin/
 /IdentityServer/**/obj/
+/IdentityServer/**/wwwroot/
