@@ -6,4 +6,15 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="wwwroot\electro-master\**" />
+    <Content Remove="wwwroot\electro-master\**" />
+    <EmbeddedResource Remove="wwwroot\electro-master\**" />
+    <None Remove="wwwroot\electro-master\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.17" />
+  </ItemGroup>
+
 </Project>
