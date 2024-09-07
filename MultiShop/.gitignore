@@ -5,3 +5,6 @@
 /IdentityServer/**/bin/
 /IdentityServer/**/obj/
 /IdentityServer/**/wwwroot/
+/Frontends/**/bin/
+/Frontends/**/obj
+/Frontends/**/wwwroot/
