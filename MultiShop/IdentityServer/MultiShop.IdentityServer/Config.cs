@@ -15,8 +15,8 @@ namespace MultiShop.IdentityServer
             new ApiResource("ResourceCatalog"){Scopes={"CatalogFullPermission","CatalogReadPermission"}},
             new ApiResource("ResourceDiscount"){Scopes={"DiscountFullPermission"}},
             new ApiResource("ResourceOrder"){Scopes={"OrderFullPermission"}},
-            new ApiResource("ResourceCargo"){Scopes={"CargoFullPermisson"}},
-            new ApiResource("ResourceBasket"){Scopes={"BasketFullPermisson"}},
+            new ApiResource("ResourceCargo"){Scopes={"CargoFullPermission"}},
+            new ApiResource("ResourceBasket"){Scopes={"BasketFullPermission"}},
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
         };
 

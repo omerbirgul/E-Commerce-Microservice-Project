@@ -9,7 +9,7 @@ using static IdentityServer4.IdentityServerConstants;
 
 namespace MultiShop.IdentityServer.Controllers
 {
-    [Authorize(LocalApi.PolicyName)]
+    //[Authorize(LocalApi.PolicyName)]
     [Route("api/[controller]")]
     [ApiController]
     public class RegistersController : ControllerBase
@@ -31,7 +31,7 @@ namespace MultiShop.IdentityServer.Controllers
                 Name = userRegisterDto.Name,
                 Surname = userRegisterDto.Surname
             };
-            var result = await _userManager.CreateAsync(values);
+            var result = await _userManager.CreateAsync(values, userRegisterDto.Password);
             if(result.Succeeded)
             {
             return Ok("User added succesfully");
