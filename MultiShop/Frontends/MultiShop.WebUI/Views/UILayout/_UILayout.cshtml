@@ -1,26 +1,22 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
 <!DOCTYPE html>
 <html lang="zxx">
 
-    @await Component.InvokeAsync("_HeadUILayoutComponentPartial")
+@await Component.InvokeAsync("_HeadUILayoutComponentPartial")
 
 <body>
-    
-    <!-- Header Section Begin -->
+
     @await Component.InvokeAsync("_TopbarUILayoutComponentPartial")
-    <!-- Header Section End -->
-    <!-- Hero Section Begin -->
+
     @await Component.InvokeAsync("_NavbarUILayoutComponentPartial")
-    <!-- Hero Section End -->
+
     @RenderBody()
-    <!-- Footer Section Begin -->
+
     @await Component.InvokeAsync("_FooterUILayoutComponentPartial")
-    <!-- Footer Section End -->
-    <!-- Js Plugins -->
+
     <script src="~/ogani-master/js/jquery-3.3.1.min.js"></script>
     <script src="~/ogani-master/js/bootstrap.min.js"></script>
     <script src="~/ogani-master/js/jquery.nice-select.min.js"></script>
@@ -29,9 +25,6 @@
     <script src="~/ogani-master/js/mixitup.min.js"></script>
     <script src="~/ogani-master/js/owl.carousel.min.js"></script>
     <script src="~/ogani-master/js/main.js"></script>
-
-
-
 </body>
 
 </html>
