@@ -1,4 +1,4 @@
-﻿@model List<MultiShop.DtoLayer.CatalogDtos.CategoryDtos.ResultCategoryDto>
+﻿@model List<ResultCategoryDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
@@ -34,7 +34,7 @@
                             }
                         </tbody>
                     </table>
-                    <a href="#" class="btn btn-primary">Add a new category</a>
+                    <a href="/Admin/Category/CreateCategory" class="btn btn-primary">Add a new category</a>
                 </div>
             </div>
         </div>
