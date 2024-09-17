@@ -57,7 +57,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         }
 
         [Route("DeleteCategory/{id}")]
-
         public async Task<IActionResult> DeleteCategory(string id)
         {
             var client = _httpClientFactory.CreateClient();
