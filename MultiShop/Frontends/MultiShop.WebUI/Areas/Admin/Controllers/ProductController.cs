@@ -20,6 +20,22 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
+        private async Task<List<SelectListItem>> GetCategoryValues()
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("http://localhost:7071/api/Categories");
+            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
+            List<SelectListItem> categoryValues = (from x in values
+                                                   select new SelectListItem
+                                                   {
+                                                       Text = x.CategoryName,
+                                                       Value = x.CategoryID
+                                                   }).ToList();
+            return categoryValues;
+        }
+
+
         [Route("Index")]
         public async Task<IActionResult> Index()
         {
@@ -38,17 +54,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [Route("CreateProduct")]
         public async Task<IActionResult> CreateProduct()
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("http://localhost:7071/api/Categories");
-            var jsonData = await responseMessage.Content.ReadAsStringAsync();
-            var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
-            List<SelectListItem> categoryValues = (from x in values
-                                                   select new SelectListItem
-                                                   {
-                                                       Text = x.CategoryName,
-                                                       Value = x.CategoryID
-                                                   }).ToList();
-            ViewBag.CategoryValues = categoryValues;
+            
+            ViewBag.CategoryValues = await GetCategoryValues();
             return View();
         }
 
@@ -73,6 +80,37 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.DeleteAsync("http://localhost:7071/api/Products?id=" + id);
             if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Product", new { area = "Admin" });
+            }
+            return View();
+        }
+
+        [HttpGet]
+        [Route("UpdateProduct/{id}")]
+        public async Task<IActionResult> UpdateProduct(string id)
+        {
+            ViewBag.CategoryValues = await GetCategoryValues();
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("http://localhost:7071/api/Products/" + id);
+            if(responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<UpdateProductDto>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+
+        [HttpPost]
+        [Route("UpdateProduct/{id}")]
+        public async Task<IActionResult> UpdateProduct(UpdateProductDto updateProductDto)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(updateProductDto);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PutAsync("http://localhost:7071/api/Products", stringContent);
+            if(responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index", "Product", new { area = "Admin" });
             }
