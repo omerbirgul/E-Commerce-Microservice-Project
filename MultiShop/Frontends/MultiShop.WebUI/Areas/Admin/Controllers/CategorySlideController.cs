@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.CategorySlideDtos;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
@@ -17,6 +18,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
+        [HttpGet]
         [Route("Index")]
         public async Task<IActionResult> Index()
         {
@@ -27,6 +29,28 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultCategorySlideDto>>(jsonData);
                 return View(values);
+            }
+            return View();
+        }
+
+        [HttpGet]
+        [Route("CreateCategorySlide")]
+        public async Task<IActionResult> CreateCategorySlide()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Route("CreateCategorySlide")]
+        public async Task<IActionResult> CreateCategorySlide(CreateCategorySlideDto createCategorySlideDto)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(createCategorySlideDto);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PostAsync("http://localhost:7071/api/CategorySlides", stringContent);
+            if(responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "CategorySlide", new { area = "Admin" });
             }
             return View();
         }
