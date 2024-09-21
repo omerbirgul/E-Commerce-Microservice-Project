@@ -1,39 +1,14 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/UILayout/_UILayout.cshtml";
 }
 
-<!-- Breadcrumb Section Begin -->
-<section class="hero">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 text-center">
-                <div class="breadcrumb__text">
-                    <div>
-                        <a href="#">Homepage
-                        <span>Products</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-9">
-                <div class="hero__item set-bg" data-setbg="@Url.Content("~/ogani-master/img/hero/banner.jpg")">
-                    <div class="hero__text">
-                        <span>FRUIT FRESH</span>
-                        <h2>Vegetable <br />100% Organic</h2>
-                        <p>Free Pickup and Delivery Available</p>
-                        <a href="#" class="primary-btn">SHOP NOW</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+@await Component.InvokeAsync("_HeadImagesDefaultComponentPartial")
 <br />
-
-
 @await Component.InvokeAsync("_CategorySlideDefaultComponentPartial")
-@await Component.InvokeAsync("_FeatureDefaultComponentPartial")<br />
-@await Component.InvokeAsync("_SpecialOfferComponentPartial") <br />
+@await Component.InvokeAsync("_FeatureDefaultComponentPartial")
+<br />
+@* @await Component.InvokeAsync("_SpecialOfferComponentPartial") *@
+<br />
 @await Component.InvokeAsync("_LatestProductComponentPartial")
 
