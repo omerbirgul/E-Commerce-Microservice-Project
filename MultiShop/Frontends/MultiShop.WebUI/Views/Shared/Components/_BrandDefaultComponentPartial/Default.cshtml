@@ -1,1 +1,17 @@
-﻿
+﻿@model List<ResultBrandDto>
+<section class="categories">
+    <div class="container">
+        <div class="row">
+            <div class="categories__slider owl-carousel">
+                @foreach (var item in Model)
+                {
+                        <div style="background-size:100%; height:100px; width:100px;" class="categories__item set-bg" data-setbg="@Url.Content(item.BrandImageUrl)">
+                            @* <h5><a href="#">@item.BrandName</a></h5> *@
+                        </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+
