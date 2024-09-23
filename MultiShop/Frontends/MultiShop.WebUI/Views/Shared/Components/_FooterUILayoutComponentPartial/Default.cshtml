@@ -1,16 +1,19 @@
-﻿<footer class="footer spad">
+﻿@model List<ResultAboutDto>
+
+<footer class="footer spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer__about">
-                    <div class="footer__about__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
-                    </div>
-                    <ul>
-                        <li>Address: 60-49 Road 11378 New York</li>
-                        <li>Phone: +65 11.188.888</li>
-                        <li>Email: hello@microshop.com</li>
-                    </ul>
+                        <h6 style="font-weight:700;">About Us</h6>
+
+                        @foreach(var item in Model)
+                        {
+                        <p><i class="fa-solid fa-right-long"></i>@item.Description</p>
+                        <p><i class="fa-solid fa-right-long"></i>@item.Address</p>
+                        <p><i class="fa-solid fa-right-long"></i>@item.Phone</p>
+                        <p><i class="fa-solid fa-right-long"></i>@item.Email</p>
+                        }
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-1">

@@ -64,7 +64,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var value = JsonConvert.DeserializeObject<GetByIdAboutDto>(jsonData);
+                var value = JsonConvert.DeserializeObject<UpdateAboutDto>(jsonData);
                 return View(value);
             }
             return View();
@@ -77,7 +77,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateAboutDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("http://localhost:7071/api/Abouts", stringContent);
+            var responseMessage = await client.PutAsync("http://localhost:7071/api/Abouts", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index", "About", new { area = "Admin" });
@@ -89,7 +89,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> DeleteAbout(string id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync("http://localhost:7071/api/Abouts?id=" + id);
+            var responseMessage = await client.DeleteAsync("http://localhost:7071/api/Abouts/" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index", "About", new { area = "Admin" });
