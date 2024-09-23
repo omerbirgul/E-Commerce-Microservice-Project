@@ -35,6 +35,12 @@ namespace MultiShop.Catalog.Services.AboutServices
             await _aboutCollection.DeleteOneAsync(x => x.AboutId == id);
         }
 
+        public async Task<GetByIdAboutDto> GetAboutByIdAsync(string id)
+        {
+            var value = await _aboutCollection.Find<About>(x => x.AboutId == id).FirstOrDefaultAsync();
+            return _mapper.Map<GetByIdAboutDto>(value);
+        }
+
         public async Task UpdateAboutAsync(UpdateAboutDto updateAboutDto)
         {
             var value = _mapper.Map<About>(updateAboutDto);

@@ -25,6 +25,13 @@ namespace MultiShop.Catalog.Controllers
             return Ok(values);
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetAboutById(string id)
+        {
+            var value = await _aboutService.GetAboutByIdAsync(id);
+            return Ok(value);
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateAbout(CreateAboutDto createAboutDto)
         {
