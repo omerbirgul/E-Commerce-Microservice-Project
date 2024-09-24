@@ -1,19 +1,18 @@
-﻿<div class="col-lg-6 col-md-6">
+﻿@model GetByIdProductImageDto
+<div class="col-lg-6 col-md-6">
     <div class="product__details__pic">
         <div class="product__details__pic__item">
             <img class="product__details__pic__item--large"
-                 src="~/ogani-master/img/product/details/product-details-1.jpg" alt="">
+                 src="@Model.Image1" alt="">
         </div>
         <div class="product__details__pic__slider owl-carousel">
-            <img data-imgbigurl="@Url.Content("~/ogani-master/img/product/details/product-details-2.jpg")"
-                 src="~/ogani-master/img/product/details/thumb-1.jpg" alt="">
+            <img data-imgbigurl="@Url.Content(@Model.Image2)"
+                 src="@Model.Image2" alt="">
 
-            <img data-imgbigurl="@Url.Content("~/ogani-master/img/product/details/product-details-3.jpg")"
-                 src="~/ogani-master/img/product/details/thumb-2.jpg" alt="">
-            <img data-imgbigurl="@Url.Content("~/ogani-master/img/product/details/product-details-5.jpg")"
-                 src="~/ogani-master/img/product/details/thumb-3.jpg" alt="">
-            <img data-imgbigurl="@Url.Content("~/ogani-master/img/product/details/product-details-4.jpg")"
-                 src="~/ogani-master/img/product/details/thumb-4.jpg" alt="">
+            <img data-imgbigurl="@Url.Content(@Model.Image3)"
+                 src="@Model.Image3" alt="">
+            <img data-imgbigurl="@Url.Content(@Model.Image4)"
+                 src="@Model.Image4" alt="">
         </div>
     </div>
 </div>

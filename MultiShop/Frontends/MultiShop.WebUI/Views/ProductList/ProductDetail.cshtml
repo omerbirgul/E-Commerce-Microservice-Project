@@ -8,7 +8,7 @@
 <section class="product-details spad">
     <div class="container">
         <div class="row">
-            @await Component.InvokeAsync("_ProductDetailImageComponentPartial")
+            @await Component.InvokeAsync("_ProductDetailImageComponentPartial", new {id = ViewBag.x})
             @await Component.InvokeAsync("_ProductDetailFeatureComponentPartial", new {id = ViewBag.x})
             
             
