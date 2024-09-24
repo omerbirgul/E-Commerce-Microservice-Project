@@ -25,7 +25,7 @@
                         </li>
                     </ul>
                     <div class="tab-content">
-                        @await Component.InvokeAsync("_ProductDetailInformationComponentPartial")
+                        @await Component.InvokeAsync("_ProductDetailInformationComponentPartial", new {id = ViewBag.x})
                         @await Component.InvokeAsync("_ProductDetailReviewComponentPartial")
                     </div>
                 </div>
