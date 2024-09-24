@@ -9,11 +9,11 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     [AllowAnonymous]
     [Area("Admin")]
     [Route("Admin/ProductDetail")]
-    public class ProductDetail : Controller
+    public class ProductDetailController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public ProductDetail(IHttpClientFactory httpClientFactory)
+        public ProductDetailController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
@@ -23,11 +23,11 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> UpdateProductDetail(string id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("http://localhost:7071/api/ProductDetails/GetProductDetailByProductId" + id);
+            var responseMessage = await client.GetAsync("http://localhost:7071/api/ProductDetails/GetProductDetailByProductId/" + id);
             if(responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var value = JsonConvert.DeserializeObject<GetByProductIdProductDetailDto>(jsonData);
+                var value = JsonConvert.DeserializeObject<UpdateProductDetailDto>(jsonData);
                 return View(value);
             }
             return View();
