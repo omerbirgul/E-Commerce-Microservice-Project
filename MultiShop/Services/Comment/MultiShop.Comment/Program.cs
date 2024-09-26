@@ -1,4 +1,8 @@
+using MultiShop.Comment.Services.CommentServices;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<ICommentService, CommentService>();
 
 // Add services to the container.
 
