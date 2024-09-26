@@ -1,6 +1,15 @@
+using MultiShop.Comment.Context;
+using MultiShop.Comment.Mapping;
 using MultiShop.Comment.Services.CommentServices;
+using System.Reflection;
+
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAutoMapper(typeof(GeneralMapping));
+
+
+builder.Services.AddDbContext<CommentContext>();
 
 builder.Services.AddScoped<ICommentService, CommentService>();
 

@@ -1,0 +1,61 @@
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using MultiShop.Comment.Context;
+using MultiShop.Comment.Dtos.UserCommentDtos;
+using MultiShop.Comment.Entities;
+using MultiShop.Comment.Services.CommentServices;
+
+namespace MultiShop.Comment.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    [AllowAnonymous]
+    public class CommentsController : ControllerBase
+    {
+        private readonly ICommentService _commentService;
+        public CommentsController(ICommentService commentService)
+        {
+            _commentService = commentService;
+        }
+
+        [HttpGet]
+        public  async Task<IActionResult> GetAllComments()
+        {
+            var value = await _commentService.UserCommentListAsync();
+            return Ok(value);
+        }
+
+        //[HttpGet("GetCommentByProduct/{id}")]
+        //public IActionResult GetCommentByProduct(long id)
+        //{
+        //    var values = _commentContext.UserComments
+        //        .Where(x => long.Parse(x.ProductId) == id).ToListAsync();
+        //    var result = _mapper.Map<List<GetByProductIdUserCommentDto>>(values);
+        //    return Ok(result);
+        //}
+
+        [HttpPost]
+        public  async Task<IActionResult> CreateComments(CreateUserCommentDto createUserCommentDto)
+        {
+            await _commentService.CreateUserCommentAsync(createUserCommentDto);
+            return Ok("Comment created successfully");
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateComment(UpdateUserCommentDto updateUserCommentDto)
+        {
+            await _commentService.UpdateUserCommentAsync(updateUserCommentDto);
+            return Ok("Comment updated successfully");
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteComment(int id)
+        {
+            await _commentService.DeleteUserCommentAsync(id);
+            return Ok("Comment deleted successfully");
+        }
+    }
+}

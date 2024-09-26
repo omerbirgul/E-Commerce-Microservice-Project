@@ -7,7 +7,7 @@ namespace MultiShop.Comment.Services.CommentServices
         Task<List<ResultUserCommentDto>> UserCommentListAsync();
         Task CreateUserCommentAsync(CreateUserCommentDto createUserCommentDto);
         Task UpdateUserCommentAsync(UpdateUserCommentDto updateUserCommentDto);
-        Task DeleteUserCommentAsync(string id);
-        Task<List<GetByProductIdUserCommentDto>> GetUserCommentByProductIdAsync(string id);
+        Task DeleteUserCommentAsync(int id);
+        Task<List<GetByProductIdUserCommentDto>> GetUserCommentByProductIdAsync(long id);
     }
 }

@@ -24,8 +24,11 @@ namespace MultiShop.Comment.Migrations
 
             modelBuilder.Entity("MultiShop.Comment.Entities.UserComment", b =>
                 {
-                    b.Property<string>("UserCommentId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserCommentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserCommentId"), 1L, 1);
 
                     b.Property<string>("CommentDetail")
                         .IsRequired()
@@ -57,7 +60,7 @@ namespace MultiShop.Comment.Migrations
 
                     b.HasKey("UserCommentId");
 
-                    b.ToTable("userComments");
+                    b.ToTable("UserComments");
                 });
 #pragma warning restore 612, 618
         }

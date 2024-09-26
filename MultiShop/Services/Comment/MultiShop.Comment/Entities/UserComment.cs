@@ -1,8 +1,11 @@
-﻿namespace MultiShop.Comment.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace MultiShop.Comment.Entities
 {
     public class UserComment
     {
-        public string UserCommentId { get; set; }
+        public int UserCommentId { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }
         public string? ImageUrl { get; set; }
