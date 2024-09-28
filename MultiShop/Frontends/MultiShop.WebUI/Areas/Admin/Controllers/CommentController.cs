@@ -36,7 +36,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
 
         [HttpGet]
         [Route("UpdateComment/{id}")]
-        public async Task<IActionResult> UpdateComment(string id)
+        public async Task<IActionResult> UpdateComment(int id)
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client
