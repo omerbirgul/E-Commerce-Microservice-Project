@@ -6,12 +6,11 @@
                 @foreach(var item in Model)
                 {
                     <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="@Url.Content(item.CategoryImageUrl)">
+                        <div class="categories__item set-bg" data-setbg="@Url.Content(@item.CategoryImageUrl)">
                             <h5><a href="#">@item.CategoryTitle</a></h5>
                         </div>
                     </div>
                 }
-                
             </div>
         </div>
     </div>

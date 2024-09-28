@@ -28,7 +28,7 @@ namespace MultiShop.Comment.Controllers
             return Ok(value);
         }
 
-        [HttpGet("GetCommentByProductId")]
+        [HttpGet("GetCommentByProductId/{id}")]
         public async Task<IActionResult> GetCommentByProductId(string id)
         {
             var values = await _commentService.GetUserCommentByProductIdAsync(id);
