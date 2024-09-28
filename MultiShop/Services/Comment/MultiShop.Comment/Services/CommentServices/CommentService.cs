@@ -37,11 +37,10 @@ namespace MultiShop.Comment.Services.CommentServices
             return _mapper.Map<GetByIdCommentDto>(value);
         }
 
-        public async Task<List<GetByProductIdUserCommentDto>> GetUserCommentByProductIdAsync(long id)
+        public async Task<List<ResultUserCommentDto>> GetUserCommentByProductIdAsync(string id)
         {
-            var values = await _commentContext.UserComments
-                .Where(x => long.Parse(x.ProductId) == id).ToListAsync();
-            return _mapper.Map<List<GetByProductIdUserCommentDto>>(values);
+            var values = await _commentContext.UserComments.Where(x => x.ProductId == id).ToListAsync();
+            return _mapper.Map<List<ResultUserCommentDto>>(values);
         }
 
         public async Task UpdateUserCommentAsync(UpdateUserCommentDto updateUserCommentDto)

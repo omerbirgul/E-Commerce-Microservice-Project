@@ -28,14 +28,12 @@ namespace MultiShop.Comment.Controllers
             return Ok(value);
         }
 
-        //[HttpGet("GetCommentByProduct/{id}")]
-        //public IActionResult GetCommentByProduct(long id)
-        //{
-        //    var values = _commentContext.UserComments
-        //        .Where(x => long.Parse(x.ProductId) == id).ToListAsync();
-        //    var result = _mapper.Map<List<GetByProductIdUserCommentDto>>(values);
-        //    return Ok(result);
-        //}
+        [HttpGet("GetCommentByProductId")]
+        public async Task<IActionResult> GetCommentByProductId(string id)
+        {
+            var values = await _commentService.GetUserCommentByProductIdAsync(id);
+            return Ok(values);
+        }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCommentById(int id)
