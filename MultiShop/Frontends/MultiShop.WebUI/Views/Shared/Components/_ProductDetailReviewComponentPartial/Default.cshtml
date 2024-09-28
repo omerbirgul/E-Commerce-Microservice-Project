@@ -10,7 +10,7 @@
         <div class="col-md-6">
             <div class="product__details__tab__desc">
                 <h4>Products Reviews</h4>
-                <h6 class="mt-4">@count review for "Product Name"</h6>
+                <h6 class="mt-4">@count review"</h6>
                 @foreach (var item in Model)
                 {
                     <div class="media mb-4">
@@ -18,12 +18,19 @@
                         <div class="media-body">
                             <h6>@item.FullName<small> - <i>@item.CreatedDate.ToShortDateString()</i></small></h6>
                             <div class="text-primary mb-2">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <i class="far fa-star"></i>
+                                @for (var i = 1; i <= 5; i++)
+                                {
+                                    if (i <= item.Rating)
+                                    {
+                                        <i class="fas fa-star"></i> <!-- Dolgun yıldız -->
+                                    }
+                                    else
+                                    {
+                                        <i class="far fa-star"></i> <!-- Boş yıldız -->
+                                    }
+                                }
                             </div>
+
                             <p>@item.CommentDetail</p>
                         </div>
                     </div>
