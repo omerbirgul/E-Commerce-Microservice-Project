@@ -37,6 +37,13 @@ namespace MultiShop.Comment.Controllers
         //    return Ok(result);
         //}
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetCommentById(int id)
+        {
+            var value = await _commentService.GetCommentByIdAsync(id);
+            return Ok(value);
+        }
+
         [HttpPost]
         public  async Task<IActionResult> CreateComments(CreateUserCommentDto createUserCommentDto)
         {

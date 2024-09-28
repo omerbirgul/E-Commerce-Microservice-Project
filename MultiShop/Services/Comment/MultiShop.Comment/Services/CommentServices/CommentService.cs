@@ -31,6 +31,11 @@ namespace MultiShop.Comment.Services.CommentServices
             await _commentContext.SaveChangesAsync();
         }
 
+        public async Task<GetByIdCommentDto> GetCommentByIdAsync(int id)
+        {
+            var value = await _commentContext.UserComments.FindAsync(id);
+            return _mapper.Map<GetByIdCommentDto>(value);
+        }
 
         public async Task<List<GetByProductIdUserCommentDto>> GetUserCommentByProductIdAsync(long id)
         {

@@ -12,6 +12,7 @@ namespace MultiShop.Comment.Mapping
             CreateMap<UserComment, UpdateUserCommentDto>().ReverseMap();
             CreateMap<UserComment, GetByProductIdUserCommentDto>().ReverseMap();
             CreateMap<UserComment, ResultUserCommentDto>().ReverseMap();
+            CreateMap<UserComment, GetByIdCommentDto>().ReverseMap();
         }
     }
 }
