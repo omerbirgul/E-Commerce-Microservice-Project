@@ -1,4 +1,4 @@
-﻿
+﻿@model CreateContactDto
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/UILayout/_UILayout.cshtml";
@@ -30,16 +30,16 @@
                 </div>
             </div>
         </div>
-        <form action="#">
+        <form method="post">
             <div class="row">
                 <div class="col-lg-6 col-md-6">
-                    <input type="text" placeholder="Your name">
+                    <input required class="form-control" type="text" placeholder="Your name" asp-for="FullName">
                 </div>
                 <div class="col-lg-6 col-md-6">
-                    <input type="text" placeholder="Your Email">
+                    <input required class="form-control" type="text" placeholder="Your Email" asp-for="Email">
                 </div>
                 <div class="col-lg-12 text-center">
-                    <textarea placeholder="Your message"></textarea>
+                    <textarea required class="form-control" placeholder="Your message" asp-for="Message"></textarea>
                     <button type="submit" class="site-btn">SEND MESSAGE</button>
                 </div>
             </div>
