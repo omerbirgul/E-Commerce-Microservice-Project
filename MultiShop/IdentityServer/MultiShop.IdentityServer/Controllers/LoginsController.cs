@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.IdentityServer.Dtos;
 using MultiShop.IdentityServer.Models;
+using MultiShop.IdentityServer.Tools;
 using System.Threading.Tasks;
 
 namespace MultiShop.IdentityServer.Controllers
@@ -25,7 +26,11 @@ namespace MultiShop.IdentityServer.Controllers
                 .PasswordSignInAsync(userLoginDto.Username, userLoginDto.Password, false, false);
             if(result.Succeeded)
             {
-                return Ok("You're logged in");
+                GetCheckAppUserViewModel model = new GetCheckAppUserViewModel();
+                model.Username = userLoginDto.Username;
+                model.Id = "1";
+                var token = JwtTokenGenerator.GenerateToken(model);
+                return Ok(token);
             }
             else
             {
