@@ -16,8 +16,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         opt.Cookie.Name = "MultiShopJwt";
     });
 
-builder.Services.AddControllersWithViews();
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<ILoginService, LoginService>();
 

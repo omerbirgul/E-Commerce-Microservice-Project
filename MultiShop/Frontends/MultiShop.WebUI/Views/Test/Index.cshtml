@@ -1,0 +1,12 @@
+﻿@model List<ResultCategoryDto>
+@{
+    Layout = null;
+}
+
+<ul>
+    @foreach(var item in Model)
+    {
+        <li>@item.CategoryID</li>
+        <li>@item.CategoryName</li>
+    }
+</ul>

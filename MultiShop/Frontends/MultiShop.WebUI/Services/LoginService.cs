@@ -12,5 +12,6 @@ namespace MultiShop.WebUI.Services
         }
 
         public string GetUserId => _contextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
     }
 }

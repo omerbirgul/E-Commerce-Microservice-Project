@@ -1,4 +1,4 @@
-﻿
+﻿@model CreateLoginDto
 @{
     Layout = null;
 }
@@ -33,13 +33,13 @@
             <form class="form-detail" method="post">
                 <h2>Login Form</h2>
                 <div class="form-row">
-                    <label for="your_email">Your Email</label>
-                    <input type="text" id="your_email" class="input-text" required pattern="[^@@]+@@[^@@]+.[a-zA-Z]{2,6}">
+                    <label for="your_username">Your Username</label>
+                    <input type="text" id="your_username" asp-for="Username" class="input-text" required>
                 </div>
                 <div class="form-group">
                     <div class="form-row form-row-1 ">
                         <label for="password">Password</label>
-                        <input type="password"  id="password" class="input-text" required>
+                        <input type="password"  id="password" asp-for="Password" class="input-text" required>
                     </div>
                 </div>
                 <div class="form-row-last">
