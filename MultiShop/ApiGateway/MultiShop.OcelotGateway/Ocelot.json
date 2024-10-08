@@ -11,13 +11,9 @@
           "Port": 7071
         }
       ],
-      "UpstreamPathTemplate": "/services/catalog/{everthing}",
+      "UpstreamPathTemplate": "/services/catalog/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "UpstreamScheme": "http",
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "OcelotAuthenticationScheme",
-        "AllowedScopes": [ "CatalogFullPermission" ]
-      }
+      "UpstreamScheme": "http"
     },
 
     //  Basket Microservice
@@ -30,13 +26,9 @@
           "Port": 7074
         }
       ],
-      "UpstreamPathTemplate": "/services/basket/{everthing}",
+      "UpstreamPathTemplate": "/services/basket/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "UpstreamScheme": "http",
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "OcelotAuthenticationScheme",
-        "AllowedScopes": [ "BasketFullPermission" ]
-      }
+      "UpstreamScheme": "http"
     },
 
     // Cargo Microservice
@@ -49,13 +41,9 @@
           "Port": 7073
         }
       ],
-      "UpstreamPathTemplate": "/services/cargo/{everthing}",
+      "UpstreamPathTemplate": "/services/cargo/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "UpstreamScheme": "http",
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "OcelotAuthenticationScheme",
-        "AllowedScopes": [ "CargoFullPermission" ]
-      }
+      "UpstreamScheme": "http"
     },
 
     // Comment Microservice
@@ -68,13 +56,9 @@
           "Port": 7075
         }
       ],
-      "UpstreamPathTemplate": "/services/comment/{everthing}",
+      "UpstreamPathTemplate": "/services/comment/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "UpstreamScheme": "http",
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "OcelotAuthenticationScheme",
-        "AllowedScopes": [ "CommentFullPermission" ]
-      }
+      "UpstreamScheme": "http"
     },
 
     // Discount Microservice
@@ -87,13 +71,9 @@
           "Port": 7070
         }
       ],
-      "UpstreamPathTemplate": "/services/discount/{everthing}",
+      "UpstreamPathTemplate": "/services/discount/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "UpstreamScheme": "http",
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "OcelotAuthenticationScheme",
-        "AllowedScopes": [ "DiscountFullPermission" ]
-      }
+      "UpstreamScheme": "http"
     },
 
     // Order Microservice
@@ -106,14 +86,11 @@
           "Port": 7072
         }
       ],
-      "UpstreamPathTemplate": "/services/order/{everthing}",
+      "UpstreamPathTemplate": "/services/order/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "UpstreamScheme": "http",
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "OcelotAuthenticationScheme",
-        "AllowedScopes": [ "OrderFullPermission" ]
-      }
+      "UpstreamScheme": "http"
     }
+
   ],
   "GlobalConfiguration": {
     "BaseUrl": "http://localhost:5000"
