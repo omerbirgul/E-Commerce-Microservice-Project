@@ -17,7 +17,7 @@ namespace MultiShop.WebUI.Controllers
 
         public async Task<IActionResult> Index()
         {
-            string token;
+            string token = "";
             using(var httpClient = new HttpClient())
             {
                 var request = new HttpRequestMessage
@@ -44,6 +44,7 @@ namespace MultiShop.WebUI.Controllers
             }
 
             var client = _httpClientFactory.CreateClient();
+            client.DefaultRequestHeaders.Authorization = new BasicAuthenticationHeaderValue("Bearer", token);
             var responseMessage = await client.GetAsync("http://localhost:7071/api/Categories");
             if (responseMessage.IsSuccessStatusCode)
             {
