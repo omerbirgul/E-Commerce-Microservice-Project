@@ -8,3 +8,5 @@
 /Frontends/**/bin/
 /Frontends/**/obj
 /Frontends/**/wwwroot/
+/ApiGateway/**/bin/
+/ApiGateway/**/obj/
