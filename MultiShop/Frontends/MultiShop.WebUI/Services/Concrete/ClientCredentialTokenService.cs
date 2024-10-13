@@ -13,8 +13,7 @@ namespace MultiShop.WebUI.Services.Concrete
         private readonly IClientAccessTokenCache _clientAccessTokenCache;
         private readonly ClientSettings _clientSettings;
 
-        public ClientCredentialTokenService(IOptions<ServiceApiSettings> serviceApiSettings, HttpClient httpClient,
-            IClientAccessTokenCache clientAccessTokenCache, IOptions<ClientSettings> clientSettings)
+        public ClientCredentialTokenService(IOptions<ServiceApiSettings> serviceApiSettings, HttpClient httpClient, IClientAccessTokenCache clientAccessTokenCache, IOptions<ClientSettings> clientSettings)
         {
             _serviceApiSettings = serviceApiSettings.Value;
             _httpClient = httpClient;
@@ -25,7 +24,7 @@ namespace MultiShop.WebUI.Services.Concrete
         public async Task<string> GetTokenAsync()
         {
             var token1 = await _clientAccessTokenCache.GetAsync("multishoptoken");
-            if(token1 == null)
+            if (token1 != null)
             {
                 return token1.AccessToken;
             }
@@ -34,7 +33,7 @@ namespace MultiShop.WebUI.Services.Concrete
                 Address = _serviceApiSettings.IdentityServerUrl,
                 Policy = new DiscoveryPolicy
                 {
-                    RequireHttps = false,
+                    RequireHttps = false
                 }
             });
 

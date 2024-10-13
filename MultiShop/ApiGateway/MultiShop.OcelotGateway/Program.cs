@@ -13,6 +13,8 @@ builder.Services.AddAuthentication().AddJwtBearer("OcelotAuthenticationScheme", 
 
 IConfiguration configuration = new ConfigurationBuilder().AddJsonFile("ocelot.json").Build();
 builder.Services.AddOcelot(configuration);
+
+
 var app = builder.Build();
 await app.UseOcelot();
 
