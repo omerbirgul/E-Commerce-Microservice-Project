@@ -37,7 +37,7 @@ namespace MultiShop.WebUI.Services.CatalogServices.CategorySlideServices
 
         public async Task UpdateCategorySlideAsync(UpdateCategorySlideDto updateCategorySlideDto)
         {
-            await _httpClient.PostAsJsonAsync<UpdateCategorySlideDto>("CategorySlides", updateCategorySlideDto);
+            await _httpClient.PutAsJsonAsync<UpdateCategorySlideDto>("CategorySlides", updateCategorySlideDto);
         }
     }
 }

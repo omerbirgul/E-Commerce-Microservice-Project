@@ -37,7 +37,7 @@ namespace MultiShop.WebUI.Services.CatalogServices.CategoryServices
 
         public async Task UpdateCategoryAsync(UpdateCategoryDto updateCategoryDto)
         {
-             await _httpClient.PostAsJsonAsync<UpdateCategoryDto>("categories" ,updateCategoryDto);
+             await _httpClient.PutAsJsonAsync<UpdateCategoryDto>("categories" ,updateCategoryDto);
         }
     }
 }
