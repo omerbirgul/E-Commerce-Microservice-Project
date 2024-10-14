@@ -1,6 +1,6 @@
 ﻿using MultiShop.DtoLayer.CatalogDtos.ProductDtos;
 
-namespace MultiShop.WebUI.Services.ProductServices
+namespace MultiShop.WebUI.Services.CatalogServices.ProductServices
 {
     public class ProductService : IProductService
     {

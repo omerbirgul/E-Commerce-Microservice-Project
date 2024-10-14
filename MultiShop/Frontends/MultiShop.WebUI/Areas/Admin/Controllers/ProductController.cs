@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using MultiShop.DtoLayer.CatalogDtos.CategoryDtos;
 using MultiShop.DtoLayer.CatalogDtos.ProductDtos;
 using MultiShop.WebUI.Services.CatalogServices.CategoryServices;
-using MultiShop.WebUI.Services.ProductServices;
+using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -94,7 +94,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
                 ProductImageURL = values.ProductImageURL,
                 CategoryID = values.CategoryID
             };
-            return View(updateProductDto);
+            return View(values);
         }
 
         [HttpPost]
