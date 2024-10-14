@@ -13,24 +13,31 @@ namespace MultiShop.WebUI.Services.CatalogServices.CategorySlideServices
 
         public async Task CreateCategorySlideAsync(CreateCategorySlideDto createCategorySlideDto)
         {
-            await _httpClient.PostAsJsonAsync<CreateCategorySlideDto>("CategorySlide", createCategorySlideDto);
+            await _httpClient.PostAsJsonAsync<CreateCategorySlideDto>("CategorySlides", createCategorySlideDto);
         }
 
         public async Task DeleteCategorySlideAsync(string id)
         {
-            await _httpClient.DeleteAsync("CategorySlide/" + id);
+            await _httpClient.DeleteAsync("CategorySlides/" + id);
         }
 
         public async Task<List<ResultCategorySlideDto>> GetAllCategorySlideAsync()
         {
-            var responseMessage = await _httpClient.GetAsync("CategorySlide");
+            var responseMessage = await _httpClient.GetAsync("CategorySlides");
             var values = await responseMessage.Content.ReadFromJsonAsync<List<ResultCategorySlideDto>>();
             return values;
         }
 
+        public async Task<GetByIdCategorySlideDto> GetCategorySlideByIdAsync(string id)
+        {
+            var responseMessage = await _httpClient.GetAsync("CategorySlides/" + id);
+            var value = await responseMessage.Content.ReadFromJsonAsync<GetByIdCategorySlideDto>();
+            return value;
+        }
+
         public async Task UpdateCategorySlideAsync(UpdateCategorySlideDto updateCategorySlideDto)
         {
-            await _httpClient.PostAsJsonAsync<UpdateCategorySlideDto>("CategorySlide", updateCategorySlideDto);
+            await _httpClient.PostAsJsonAsync<UpdateCategorySlideDto>("CategorySlides", updateCategorySlideDto);
         }
     }
 }
