@@ -18,7 +18,7 @@ namespace MultiShop.WebUI.Services.CatalogServices.CategoryServices
 
         public async Task DeleteCategoryAsync(string id)
         {
-            await _httpClient.DeleteAsync("categories?id=" + id);
+            await _httpClient.DeleteAsync("categories/" + id);
         }
 
         public async Task<List<ResultCategoryDto>> GetAllCategoriesAsync()
@@ -30,7 +30,7 @@ namespace MultiShop.WebUI.Services.CatalogServices.CategoryServices
 
         public async Task<GetByIdCategoryDto> GetCategoriesByIdAsync(string id)
         {
-            var responseMessage = await _httpClient.GetAsync("categories");
+            var responseMessage = await _httpClient.GetAsync("categories/" + id);
             var value = await responseMessage.Content.ReadFromJsonAsync<GetByIdCategoryDto>();
             return value;
         }
