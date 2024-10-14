@@ -28,6 +28,20 @@ namespace MultiShop.WebUI.Services.ProductServices
             return values;
         }
 
+        public async Task<List<ResultProductWithCategoryDto>> GetAllProductsWithCategoryAsync()
+        {
+            var responseMessage = await _httpClient.GetAsync("products/ProductListWithCategory");
+            var values = await responseMessage.Content.ReadFromJsonAsync<List<ResultProductWithCategoryDto>>();
+            return values;
+        }
+
+        public async Task<List<ResultProductWithCategoryDto>> GetAllProductsWithCategoryByCategoryIdAsync(string id)
+        {
+            var responseMessage = await _httpClient.GetAsync("ProductsWithCategoryByCategoryId/" + id);
+            var values = await responseMessage.Content.ReadFromJsonAsync<List<ResultProductWithCategoryDto>>();
+            return values;
+        }
+
         public async Task<GetByIdProductDto> GetProductByIdAsync(string id)
         {
             var responseMessage = await _httpClient.GetAsync("products/" + id);

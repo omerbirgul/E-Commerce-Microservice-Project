@@ -5,6 +5,7 @@ using MultiShop.WebUI.Services;
 using MultiShop.WebUI.Services.Abstract;
 using MultiShop.WebUI.Services.CatalogServices.CategoryServices;
 using MultiShop.WebUI.Services.Concrete;
+using MultiShop.WebUI.Services.ProductServices;
 using MultiShop.WebUI.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -56,14 +57,26 @@ builder.Services.AddHttpClient<IUserService, UserService>(opt =>
     opt.BaseAddress = new Uri(values.IdentityServerUrl);
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
+
+//********************************************************
+
+//CategoryService Configuration
 builder.Services.AddHttpClient<ICategoryService, CategoryService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
+//ProductService Configuration
+builder.Services.AddHttpClient<IProductService, ProductService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
