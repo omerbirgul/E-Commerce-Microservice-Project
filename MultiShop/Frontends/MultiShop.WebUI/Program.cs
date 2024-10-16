@@ -12,6 +12,7 @@ using MultiShop.WebUI.Services.CatalogServices.BrandServices;
 using MultiShop.WebUI.Services.CatalogServices.AboutServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductImageServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductDetailServices;
+using MultiShop.WebUI.Services.CommentServices;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpClient();
@@ -105,6 +106,12 @@ builder.Services.AddHttpClient<IProductImageService, ProductImageService>(opt =>
 builder.Services.AddHttpClient<IProductDetailService, ProductDetailService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+// CommentService Configuration
+builder.Services.AddHttpClient<ICommentService, CommentService>(opt =>
+{
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Comment.Path}");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 
