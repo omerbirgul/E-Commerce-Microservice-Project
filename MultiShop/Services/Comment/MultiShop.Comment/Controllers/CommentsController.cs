@@ -1,18 +1,14 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using MultiShop.Comment.Context;
 using MultiShop.Comment.Dtos.UserCommentDtos;
-using MultiShop.Comment.Entities;
 using MultiShop.Comment.Services.CommentServices;
 
 namespace MultiShop.Comment.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    [AllowAnonymous]
     public class CommentsController : ControllerBase
     {
         private readonly ICommentService _commentService;
