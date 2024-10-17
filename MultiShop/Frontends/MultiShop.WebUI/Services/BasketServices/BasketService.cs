@@ -13,20 +13,34 @@ namespace MultiShop.WebUI.Services.BasketServices
 
         public async Task AddBasketItem(BasketItemDto basketItemDto)
         {
-            var basket = await GetBasket() ?? new BasketTotalDto(); //Sepet boşşa yeni bir sepet oluştur
-            var existingItem = basket.BasketItems.FirstOrDefault(x => x.ProductId == basketItemDto.ProductId);
-
-            if(existingItem == null)
+            var basketInfo = await GetBasket();
+            if(basketInfo != null)
             {
-                basket.BasketItems.Add(existingItem);
+                if(!basketInfo.BasketItems.Any(x => x.ProductId == basketItemDto.ProductId))
+                {
+                    basketInfo.BasketItems.Add(basketItemDto);
+                }
+                else
+                {
+                    basketInfo = new BasketTotalDto();
+                    basketInfo.BasketItems.Add(basketItemDto);
+                }
             }
-            else
-            {
-                basket = new BasketTotalDto();
-                basket.BasketItems.Add(basketItemDto);
-            }
+            await SaveBasket(basketInfo);
+            //var basket = await GetBasket() ?? new BasketTotalDto(); //Sepet boşşa yeni bir sepet oluştur
+            //var existingItem = basket.BasketItems.FirstOrDefault(x => x.ProductId == basketItemDto.ProductId);
 
-            await SaveBasket(basket);
+            //if(existingItem == null)
+            //{
+            //    basket.BasketItems.Add(existingItem);
+            //}
+            //else
+            //{
+            //    basket = new BasketTotalDto();
+            //    basket.BasketItems.Add(basketItemDto);
+            //}
+
+            //await SaveBasket(basket);
         }
 
         public Task DeleteBasket(string userId)
@@ -45,7 +59,8 @@ namespace MultiShop.WebUI.Services.BasketServices
         {
             var basket = await GetBasket();
             var deletedItem = basket.BasketItems.FirstOrDefault(x =>x.ProductId == productId);
-            var result = basket.BasketItems.Remove(deletedItem);
+            basket.BasketItems.Remove(deletedItem);
+            await SaveBasket(basket);
             return true;
         }
 
