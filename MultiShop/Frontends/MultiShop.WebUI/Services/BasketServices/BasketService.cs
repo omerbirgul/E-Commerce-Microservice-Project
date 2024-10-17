@@ -59,7 +59,7 @@ namespace MultiShop.WebUI.Services.BasketServices
         {
             var basket = await GetBasket();
             var deletedItem = basket.BasketItems.FirstOrDefault(x =>x.ProductId == productId);
-            basket.BasketItems.Remove(deletedItem);
+            var result = basket.BasketItems.Remove(deletedItem);
             await SaveBasket(basket);
             return true;
         }
