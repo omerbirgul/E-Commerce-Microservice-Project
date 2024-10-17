@@ -126,7 +126,7 @@ builder.Services.AddHttpClient<ICommentService, CommentService>(opt =>
 builder.Services.AddHttpClient<IBasketService, BasketService>(opt =>
 {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Basket.Path}");
-}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 
 
