@@ -21,7 +21,6 @@ namespace MultiShop.WebUI.Controllers
         [HttpPost]
         public IActionResult ConfirmDiscountCoupon(string code)
         {
-            code = "BONUS20";
             var values = _discountService.GetDiscountCode(code);
             return View(values);
         }
