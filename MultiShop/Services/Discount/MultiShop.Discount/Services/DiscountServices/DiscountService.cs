@@ -73,14 +73,14 @@ namespace MultiShop.Discount.Services.DiscountServices
             }
         }
 
-        public int GetDiscountRateAsync(string code)
+        public async Task<int> GetDiscountRateAsync(string code)
         {
             string query = "Select Rate From Coupons Where Code=@code";
             var parameters = new DynamicParameters();
             parameters.Add("@code", code);
             using(var connection = _dapperContext.CreateConnection())
             {
-                var values = connection.QueryFirstOrDefault<int>(code, parameters);
+                var values = await connection.QueryFirstOrDefaultAsync<int>(query, parameters);
                 return values;
             }
         }
