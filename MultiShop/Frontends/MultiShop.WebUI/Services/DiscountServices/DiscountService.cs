@@ -13,8 +13,15 @@ namespace MultiShop.WebUI.Services.DiscountServices
 
         public async Task<GetDiscountCodeDetailByCode> GetDiscountCode(string code)
         {
-            var responseMessage = await _httpClient.GetAsync($"discounts/GetCodeDetailByCode/{code}");
+            var responseMessage = await _httpClient.GetAsync($"Discounts/GetCodeDetailByCode/{code}");
             var values = await responseMessage.Content.ReadFromJsonAsync<GetDiscountCodeDetailByCode>();
+            return values;
+        }
+
+        public async Task<int> GetDiscountRateAsync(string code)
+        {
+            var responseMessage = await _httpClient.GetAsync("Discounts/GetDiscountRate/" + code);
+            var values = await responseMessage.Content.ReadFromJsonAsync<int>();
             return values;
         }
     }
