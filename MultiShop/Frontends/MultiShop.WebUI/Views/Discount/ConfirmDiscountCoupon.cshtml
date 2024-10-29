@@ -1,4 +1,18 @@
-﻿<div class="col-lg-12">
+﻿@{
+    var totalPrice = ViewBag.TotalPrice ?? 0.00m;
+    var totalPriceWithTax = ViewBag.TotalPriceWithTax ?? 0.00m;
+    var discountRate = ViewBag.DiscountRate ?? 0;
+    var code = ViewBag.Code;
+    var taxPrice = ViewBag.TaxPrice ?? 0.00m;
+    var discountedPrice = ViewBag.DiscountedPrice ?? 0.00m;
+
+    var formattedTotalPrice = String.Format("{0:N}", totalPrice);
+    var formattedTotalPriceWithTax = String.Format("{0:N}", totalPriceWithTax);
+    var formattedTaxPrice = String.Format("{0:N}", taxPrice);
+    var formattedDiscountedPrice = String.Format("{0:N}", discountedPrice);
+}
+
+<div class="col-lg-12">
     <div class="shoping__cart__btns">
         <a href="/Default/Index" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
         <a href="#" class="primary-btn cart-btn cart-btn-right">
@@ -12,7 +26,7 @@
         <div class="shoping__discount">
             <h5>Discount Codes</h5>
             <form asp-action="ConfirmDiscountCoupon" asp-controller="Discount" method="post">
-                <input name="code" type="text" value="@ViewBag.Code" placeholder="Enter your coupon code">
+                <input name="code" type="text" value="@code" placeholder="Enter your coupon code">
                 <button type="submit" class="site-btn">APPLY COUPON</button>
             </form>
         </div>
@@ -22,11 +36,20 @@
     <div class="shoping__checkout">
         <h5>Cart Total</h5>
         <ul>
-            <li>Total Price: <span>$@ViewBag.TotalPrice</span></li>
-            <li>Tax Price: <span>$@ViewBag.TaxPrice</span></li>
-            <li>Discount Rate: <span>%@ViewBag.DiscountRate</span></li>
-            <li>Non-Discounted Amount: <span>$@ViewBag.TotalPriceWithTax</span></li>
-            <li>Discounted Price: <span>$@ViewBag.DiscountedPrice</span></li>
+            @if (code != null)
+            {
+                <li>Total Price: <span>$@formattedTotalPrice</span></li>
+                <li>Tax Price: <span>$@formattedTaxPrice</span></li>
+                <li>Discount Rate: <span>%@discountRate</span></li>
+                <li>Non-Discounted Amount: <span>$@formattedTotalPriceWithTax</span></li>
+                <li>Discounted Price: <span>$@formattedDiscountedPrice</span></li>
+            }
+            else
+            {
+                <li>Products Price: <span>$@formattedTotalPrice</span></li>
+                <li>Tax Price: <span>$@formattedTaxPrice</span></li>
+                <li>Total Amount: <span>$@formattedTotalPriceWithTax</span></li>
+            }
         </ul>
         <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
     </div>
