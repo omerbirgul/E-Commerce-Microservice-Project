@@ -12,7 +12,7 @@
         <div class="shoping__discount">
             <h5>Discount Codes</h5>
             <form asp-action="ConfirmDiscountCoupon" asp-controller="Discount" method="post">
-                <input name="code" type="text" placeholder="Enter your coupon code">
+                <input name="code" type="text" value="@ViewBag.Code" placeholder="Enter your coupon code">
                 <button type="submit" class="site-btn">APPLY COUPON</button>
             </form>
         </div>
@@ -22,8 +22,11 @@
     <div class="shoping__checkout">
         <h5>Cart Total</h5>
         <ul>
-            <li>Subtotal <span>$@ViewBag.totalPrice</span></li>
-            <li>Total <span>$@ViewBag.TotalPriceWithTax</span></li>
+            <li>Total Price: <span>$@ViewBag.TotalPrice</span></li>
+            <li>Tax Price: <span>$@ViewBag.TaxPrice</span></li>
+            <li>Discount Rate: <span>%@ViewBag.DiscountRate</span></li>
+            <li>Non-Discounted Amount: <span>$@ViewBag.TotalPriceWithTax</span></li>
+            <li>Discounted Price: <span>$@ViewBag.DiscountedPrice</span></li>
         </ul>
         <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
     </div>
