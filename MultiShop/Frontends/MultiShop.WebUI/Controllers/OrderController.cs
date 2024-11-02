@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.OrderDtos.OrderAddressDtos;
 using MultiShop.WebUI.Services.Abstract;
+using MultiShop.WebUI.Services.BasketServices;
 using MultiShop.WebUI.Services.OrderServices.OrderAddressServices;
 
 namespace MultiShop.WebUI.Controllers
@@ -30,6 +31,13 @@ namespace MultiShop.WebUI.Controllers
             await _orderAddressService.CreateOrderAddressAsync(createOrderAddressDto);
             return RedirectToAction("Index", "Payment");
         }
+
+        //public async Task<PartialViewResult> OrderSummary()
+        //{
+        //    var basketTotal =  await _basketService.GetBasket();
+        //    var basketItems = basketTotal.BasketItems;
+        //    return PartialView(basketItems);
+        //}
 
     }
 }

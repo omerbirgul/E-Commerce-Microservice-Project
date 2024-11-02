@@ -1,0 +1,14 @@
+﻿@model List<BasketItemDto>
+
+@{
+    decimal totalPrice = 0;
+}
+
+<ul>
+    @foreach (var item in Model)
+    {
+        totalPrice = item.Price * item.Quantity;
+
+        <li>@item.ProductName <span>$@totalPrice</span></li>
+    }
+</ul>
