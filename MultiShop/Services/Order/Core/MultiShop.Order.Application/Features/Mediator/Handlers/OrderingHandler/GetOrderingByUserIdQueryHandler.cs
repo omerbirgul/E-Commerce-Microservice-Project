@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using MultiShop.Order.Application.Features.Mediator.Queries.OrderingQueries;
 using MultiShop.Order.Application.Features.Mediator.Results.OrderingResults;
+using MultiShop.Order.Application.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,24 @@ namespace MultiShop.Order.Application.Features.Mediator.Handlers.OrderingHandler
     public class GetOrderingByUserIdQueryHandler : IRequestHandler<GetOrderingByUserIdQuery, 
         List<GetOrderingByUserIdQueryResult>>
     {
-        public Task<List<GetOrderingByUserIdQueryResult>> Handle(GetOrderingByUserIdQuery request, 
+        private readonly IOrderingRepository _orderingRepository;
+
+        public GetOrderingByUserIdQueryHandler(IOrderingRepository orderingRepository)
+        {
+            _orderingRepository = orderingRepository;
+        }
+
+        public async Task<List<GetOrderingByUserIdQueryResult>> Handle(GetOrderingByUserIdQuery request, 
             CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var values = _orderingRepository.GetOrderingsByUserId(request.Id);
+            return values.Select(x => new GetOrderingByUserIdQueryResult
+            {
+                OrderDate = x.OrderDate,
+                UserId = x.UserId,
+                OrderingId = x.OrderingId,
+                TotalPrice = x.TotalPrice
+            }).ToList();
         }
     }
 }
