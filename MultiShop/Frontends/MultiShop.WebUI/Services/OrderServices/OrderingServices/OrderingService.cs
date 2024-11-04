@@ -13,7 +13,7 @@ namespace MultiShop.WebUI.Services.OrderServices.OrderingServices
 
         public async Task<List<ResultOrderingByUserIdDto>> GetOrderingByUserIdAsync(string id)
         {
-            var responseMessage = await _httpClient.GetAsync("Orders/GetOrderingByUserId/" + id);
+            var responseMessage = await _httpClient.GetAsync("Orderings/GetOrderingByUserId/" + id);
             var orderingValues = await responseMessage.Content.ReadFromJsonAsync<List<ResultOrderingByUserIdDto>>();
             return orderingValues;
         }

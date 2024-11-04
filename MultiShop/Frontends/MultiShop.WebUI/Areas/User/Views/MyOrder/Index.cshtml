@@ -1,7 +1,33 @@
-﻿
+﻿@model List<ResultOrderingByUserIdDto>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/User/Views/UserLayout/Index.cshtml";
+    int count = 0;
 }
 
-<h1>hello</h1>
+
+<div class="container">
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Total Price</th>
+                <th scope="col">Order Date</th>
+                <th scope="col">Order Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+                count++;
+            <tr>
+                <td>@count</td>
+                <td>$@item.TotalPrice</td>
+                <td>@item.OrderDate</td>
+                <td> <a class="btn btn-warning" href="#">Details</a> </td>
+            </tr>                
+            }
+        </tbody>
+    </table>
+</div>
