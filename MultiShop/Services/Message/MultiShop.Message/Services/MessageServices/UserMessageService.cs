@@ -21,6 +21,7 @@ namespace MultiShop.Message.Services.MessageServices
         {
             var messageValue = _mapper.Map<UserMessage>(createMessageDto);
             await _messageContext.UserMessages.AddAsync(messageValue);
+            await _messageContext.SaveChangesAsync();
         }
 
         public async Task DeleteMessageAsync(int id)
@@ -29,6 +30,7 @@ namespace MultiShop.Message.Services.MessageServices
             if (messageValue != null)
             {
                 _messageContext.Remove(messageValue);
+                await _messageContext.SaveChangesAsync();
             }
         }
 
@@ -60,6 +62,7 @@ namespace MultiShop.Message.Services.MessageServices
         {
             var messageValue = _mapper.Map<UserMessage>(updateMessageDto);
             _messageContext.UserMessages.Update(messageValue);
+            await _messageContext.SaveChangesAsync();
         }
     }
 }
