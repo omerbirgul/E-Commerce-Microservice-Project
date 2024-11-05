@@ -19,6 +19,7 @@ namespace MultiShop.IdentityServer
             new ApiResource("ResourceComment"){Scopes={"CommentFullPermission"}},
             new ApiResource("ResourceBasket"){Scopes={"BasketFullPermission"}},
             new ApiResource("ResourceOcelot"){Scopes={"OcelotFullPermission"}},
+            new ApiResource("ResourceMessage"){Scopes={"MessageFullPermission"}},
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
         };
 
@@ -38,6 +39,7 @@ namespace MultiShop.IdentityServer
             new ApiScope("CargoFullPermission", "Full authority for cargo operations"),
             new ApiScope("CommentFullPermission", "Full authority for comment operations"),
             new ApiScope("BasketFullPermission", "Full authority for basket operations"),
+            new ApiScope("MessageFullPermission", "Full authority for message operations"),
             new ApiScope("OcelotFullPermission", "Full authority for ocelot operations"),
 
             new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
@@ -66,6 +68,7 @@ namespace MultiShop.IdentityServer
                 ClientSecrets = {new Secret("multishopsecret".Sha256())},
                 AllowedScopes = {"CatalogReadPermission", "CatalogFullPermission", "BasketFullPermission",
                     "OcelotFullPermission", "CommentFullPermission", "DiscountFullPermission", "OrderFullPermission",
+                    "MessageFullPermission",
                 IdentityServerConstants.LocalApi.ScopeName,
                 IdentityServerConstants.StandardScopes.Email,
                 IdentityServerConstants.StandardScopes.OpenId,
