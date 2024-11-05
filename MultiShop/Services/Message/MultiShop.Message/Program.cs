@@ -1,7 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using MultiShop.Message.DAL.Context;
+using MultiShop.Message.Services.MessageServices;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<IUserMessageService, UserMessageService>();
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 // Add services to the container.
 
