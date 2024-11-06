@@ -48,8 +48,8 @@
                 <td>@count</td>
                 <td>@item.SenderId</td>
                 <td>@item.Subject</td>
-                <td>@item.MessageDate</td>
-                @* <td>@item.</td> *@
+                <td>@(((DateTime)item.MessageDate).ToString("dd-MMM-yyyy"))</td>
+                <td></td>
                 <td><button>Delete</button></td>
                 <td><button>Open</button></td>
             </tr>
