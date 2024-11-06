@@ -5,7 +5,7 @@ namespace MultiShop.WebUI.Services.Abstract
 {
     public interface IUserService
     {
-        Task<UserDetailViewModel> GetUserInfoAsync();
+        Task<ResultUserDto> GetUserInfoAsync();
         Task<List<ResultUserDto>> GetAllUserAsync(); 
     }
 }

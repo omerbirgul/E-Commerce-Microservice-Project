@@ -20,7 +20,7 @@ namespace MultiShop.WebUI.Areas.User.Controllers
         public async Task<IActionResult> Inbox()
         {
             var user = await _userService.GetUserInfoAsync();
-            var inboxValues = await _messageService.GetInboxMessagesAsync(user.Id);
+            var inboxValues = await _messageService.GetInboxMessagesAsync(user.id);
             return View(inboxValues);
         }
 
@@ -28,7 +28,7 @@ namespace MultiShop.WebUI.Areas.User.Controllers
         public async Task<IActionResult> Sendbox()
         {
             var user = await _userService.GetUserInfoAsync();
-            var sendboxValues = await _messageService.GetSendboxMessagesAsync(user.Id);
+            var sendboxValues = await _messageService.GetSendboxMessagesAsync(user.id);
             return View(sendboxValues);
         }
     }

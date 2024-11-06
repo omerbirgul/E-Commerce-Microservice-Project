@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using MultiShop.IdentityServer.Dtos;
 using MultiShop.IdentityServer.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
@@ -30,13 +31,13 @@ namespace MultiShop.IdentityServer.Controllers
             var userClaim = User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Sub);
             var user = await _userManager.FindByIdAsync(userClaim.Value);
 
-            return Ok(new
+            return Ok(new ResultUserDto
             {
-                Id = user.Id,
-                Name = user.Name,
-                Surname = user.Surname,
-                Email = user.Email,
-                UserName = user.UserName
+                id = user.Id,
+                name = user.Name,
+                surname = user.Surname,
+                email = user.Email,
+                userName = user.UserName
             });
         }
 

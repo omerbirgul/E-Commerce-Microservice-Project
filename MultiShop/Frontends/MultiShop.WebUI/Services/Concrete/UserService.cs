@@ -27,9 +27,19 @@ namespace MultiShop.WebUI.Services.Concrete
             }
         }
 
-        public async Task<UserDetailViewModel> GetUserInfoAsync()
+        public async Task<ResultUserDto> GetUserInfoAsync()
         {
-            return await _httpClient.GetFromJsonAsync<UserDetailViewModel>("/api/users/getuserinfo");
+            var responseMessage = await _httpClient.GetAsync("/api/users/getuserinfo");
+            var userValue = await responseMessage.Content.ReadFromJsonAsync<ResultUserDto>();
+            if(userValue != null)
+            {
+                return userValue;
+            }
+            else
+            {
+                throw new Exception("User info cannot found");
+            }
+            //return await _httpClient.GetFromJsonAsync<UserDetailViewModel>("/api/users/getuserinfo");
         }
     }
 }

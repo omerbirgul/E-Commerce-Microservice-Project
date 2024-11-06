@@ -27,7 +27,7 @@ namespace MultiShop.WebUI.Controllers
         public async Task<IActionResult> Index(CreateOrderAddressDto createOrderAddressDto)
         {
             var userValues = await _userService.GetUserInfoAsync();
-            createOrderAddressDto.UserId = userValues.Id;
+            createOrderAddressDto.UserId = userValues.id;
             await _orderAddressService.CreateOrderAddressAsync(createOrderAddressDto);
             return RedirectToAction("Index", "Payment");
         }

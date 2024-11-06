@@ -19,7 +19,7 @@ namespace MultiShop.WebUI.Areas.User.Controllers
         public async Task<IActionResult> Index()
         {
             var user = await _userService.GetUserInfoAsync();
-            var orderingValues = await _orderingService.GetOrderingByUserIdAsync(user.Id);
+            var orderingValues = await _orderingService.GetOrderingByUserIdAsync(user.id);
             return View(orderingValues);
         }
     }
