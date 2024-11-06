@@ -16,6 +16,8 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> UserList()
         {
             var userList = await _userService.GetAllUserAsync();
+            var userCount = userList.Count();
+            ViewBag.UserCount = userCount;
             return View(userList);
         }
     }
