@@ -28,7 +28,7 @@ namespace MultiShop.IdentityServer.Services.IdentityUserServices
         public async Task<List<ApplicationUser>> GetAllUserAsync()
         {
             var userList = await _userManager.Users.ToListAsync();
-            if (userList == null)
+            if (userList != null)
             {
                 return userList;
             }
@@ -44,7 +44,7 @@ namespace MultiShop.IdentityServer.Services.IdentityUserServices
             var userClaim =  _contextAccessor.HttpContext.User.Claims
                 .FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Sub);
             var user = await _userManager.FindByIdAsync(userClaim.Value);
-            if (user == null)
+            if (user != null)
             {
                 return new ResultUserDto
                 {

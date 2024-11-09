@@ -29,7 +29,7 @@ namespace MultiShop.WebUI.Services.Concrete
 
         public async Task<ResultUserDto> GetUserInfoAsync()
         {
-            var responseMessage = await _httpClient.GetAsync("/api/users/getuserinfo");
+            var responseMessage = await _httpClient.GetAsync("/api/users/GetUserInfo");
             var userValue = await responseMessage.Content.ReadFromJsonAsync<ResultUserDto>();
             if(userValue != null)
             {

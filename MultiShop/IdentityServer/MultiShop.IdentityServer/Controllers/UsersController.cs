@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MultiShop.IdentityServer.Dtos;
 using MultiShop.IdentityServer.Models;
+using MultiShop.IdentityServer.Services.IdentityUserServices;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,34 +19,25 @@ namespace MultiShop.IdentityServer.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IIdentityUserService _identityUserService;
 
-        public UsersController(UserManager<ApplicationUser> userManager)
+        public UsersController(IIdentityUserService identityUserService)
         {
-            _userManager = userManager;
+            _identityUserService = identityUserService;
         }
 
         [HttpGet("GetUserInfo")]
         public async Task<IActionResult> GetUserInfo()
         {
-            var userClaim = User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Sub);
-            var user = await _userManager.FindByIdAsync(userClaim.Value);
-
-            return Ok(new ResultUserDto
-            {
-                id = user.Id,
-                name = user.Name,
-                surname = user.Surname,
-                email = user.Email,
-                userName = user.UserName
-            });
+            var userValue = await _identityUserService.GetUserInfoAsync();
+            return Ok(userValue);
         }
 
         [HttpGet("GetAllUsers")]
         public async Task<IActionResult> GetAllUsers()
         {
-            var userList = await _userManager.Users.ToListAsync();
-            return Ok(userList);
+            var userValueList = await _identityUserService.GetAllUserAsync();
+            return Ok(userValueList);
         }
     }
 }
