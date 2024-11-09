@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MultiShop.IdentityServer.Services.IdentityUserServices;
 
 namespace MultiShop.IdentityServer
 {
@@ -28,6 +29,9 @@ namespace MultiShop.IdentityServer
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpContextAccessor();
+            services.AddScoped<IIdentityUserService, IdentityUserService>();
+
             services.AddLocalApiAuthentication();
             services.AddControllersWithViews();
 
